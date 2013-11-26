@@ -46,6 +46,16 @@ static char* const navigationControllerDelegateKey = "MRNavigationControllerDele
     [self pushViewController:viewController animated:animated];
 }
 
+- (UIViewController*)popViewControllerAnimated:(BOOL)animated completion:(void(^)(void))completion
+{
+    if (self.viewControllers.count > 1)
+    {
+        UIViewController* penultimateViewController = self.viewControllers[self.viewControllers.count - 2];
+        [self.navigationControllerDelegate savePopToViewController:penultimateViewController completion:completion];
+    }
+    return [self popViewControllerAnimated:animated];
+}
+
 - (NSArray*)popToRootViewControllerAnimated:(BOOL)animated completion:(void(^)(void))completion
 {
     [self.navigationControllerDelegate savePopToRootController:completion];

@@ -140,10 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				5B83FA1A1843ADA8005AFD6B /* UINavigationController-Blocks */,
-				5B83FA2B1843ADDF005AFD6B /* Controller */,
-				5B83FA2A1843ADDB005AFD6B /* View */,
-				5B83FA271843ADD6005AFD6B /* MRAppDelegate.h */,
-				5B83FA281843ADD6005AFD6B /* MRAppDelegate.m */,
+				5B83FA2B1843ADDF005AFD6B /* Demo */,
 				5B83F9FD1843AD9F005AFD6B /* Images.xcassets */,
 				5B83F9F21843AD9F005AFD6B /* Supporting Files */,
 			);
@@ -194,20 +191,11 @@
 			path = "UINavigationController-Blocks";
 			sourceTree = "<group>";
 		};
-		5B83FA2A1843ADDB005AFD6B /* View */ = {
+		5B83FA2B1843ADDF005AFD6B /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				5B83FA381843ADF4005AFD6B /* MRViewControllerOne.xib */,
-				5B83FA391843ADF4005AFD6B /* MRViewControllerTwo.xib */,
-				5B83FA3A1843ADF4005AFD6B /* MRViewControllerThree.xib */,
-				5B83FA3B1843ADF4005AFD6B /* MRViewControllerFour.xib */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
-		5B83FA2B1843ADDF005AFD6B /* Controller */ = {
-			isa = PBXGroup;
-			children = (
+				5B83FA271843ADD6005AFD6B /* MRAppDelegate.h */,
+				5B83FA281843ADD6005AFD6B /* MRAppDelegate.m */,
 				5B83FA2C1843ADE8005AFD6B /* MRViewControllerOne.h */,
 				5B83FA2D1843ADE8005AFD6B /* MRViewControllerOne.m */,
 				5B83FA2E1843ADE8005AFD6B /* MRViewControllerTwo.h */,
@@ -216,8 +204,12 @@
 				5B83FA311843ADE8005AFD6B /* MRViewControllerThree.m */,
 				5B83FA321843ADE8005AFD6B /* MRViewControllerFour.h */,
 				5B83FA331843ADE8005AFD6B /* MRViewControllerFour.m */,
+				5B83FA381843ADF4005AFD6B /* MRViewControllerOne.xib */,
+				5B83FA391843ADF4005AFD6B /* MRViewControllerTwo.xib */,
+				5B83FA3A1843ADF4005AFD6B /* MRViewControllerThree.xib */,
+				5B83FA3B1843ADF4005AFD6B /* MRViewControllerFour.xib */,
 			);
-			name = Controller;
+			name = Demo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -532,6 +524,7 @@
 				5B83FA161843AD9F005AFD6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5B83FA171843AD9F005AFD6B /* Build configuration list for PBXNativeTarget "UINavigationController-BlocksTests" */ = {
 			isa = XCConfigurationList;
@@ -540,6 +533,7 @@
 				5B83FA191843AD9F005AFD6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -43,13 +43,7 @@
     return YES;
 }
 
-- (void)ping
-{
-	NSLog(@"VC1 = %@", self.vc1.title);
-	NSLog(@"VC2 = %@", self.vc2.title);
-	NSLog(@"VC3 = %@", self.vc3.title);
-	NSLog(@"VC4 = %@", self.vc4.title);
-}
+#pragma mark - MRViewControllerOneDelegate
 
 - (void)showVC2
 {
@@ -64,6 +58,8 @@
 	}];
 }
 
+#pragma mark - MRViewControllerTwoDelegate
+
 - (void)showVC3
 {
 	self.vc3 = [[MRViewControllerThree alloc] init];
@@ -75,6 +71,16 @@
 		NSLog(@"VC3 popped VC3");
 		self.vc3 = nil;
 	}];
+}
+
+#pragma mark - MRViewControllerThreeDelegate
+
+- (void)popToVC1
+{
+	[self.nav popViewControllerAnimated:YES completion:^{
+        NSLog(@"VC2 popped to VC1");
+    }];
+	self.vc2 = nil;
 }
 
 - (void)showVC4
@@ -90,6 +96,8 @@
 	}];
 }
 
+#pragma mark - MRViewControllerFourDelegate
+
 - (void)popToRoot
 {
 	[self.nav popToRootViewControllerAnimated:YES completion:^{
@@ -101,21 +109,29 @@
 	self.vc4 = nil;
 }
 
-- (void)popToVC2
-{
-	[self.nav popToViewController:self.vc2 animated:YES completion:^{
-        NSLog(@"Popped from VC4 to VC2");
-    }];
-	self.vc3 = nil;
-	self.vc4 = nil;
-}
-
 - (void)popToVC3
 {
 	[self.nav popToViewController:self.vc3 animated:YES completion:^{
          NSLog(@"Popped from VC4 to VC3");
     }];
 	self.vc4 = nil;
+}
+
+- (void)popToVC2
+{
+    [self.nav popToViewController:self.vc2 animated:YES completion:^{
+        NSLog(@"VC3 popped to VC2 manually");
+    }];
+}
+
+#pragma mark - Private
+
+- (void)ping
+{
+	NSLog(@"VC1 = %@", self.vc1.title);
+	NSLog(@"VC2 = %@", self.vc2.title);
+	NSLog(@"VC3 = %@", self.vc3.title);
+	NSLog(@"VC4 = %@", self.vc4.title);
 }
 
 @end

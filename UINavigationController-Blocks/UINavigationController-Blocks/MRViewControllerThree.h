@@ -11,6 +11,7 @@
 @protocol MRViewControllerThreeDelegate <NSObject>
 
 - (void)showVC4;
+- (void)popToVC2;
 
 @end
 
