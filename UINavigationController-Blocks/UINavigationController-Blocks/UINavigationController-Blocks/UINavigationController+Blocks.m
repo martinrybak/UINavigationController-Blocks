@@ -12,7 +12,7 @@
 
 static char* const navigationControllerDelegateKey = "MRNavigationControllerDelegate";
 
-@implementation UINavigationController (Back)
+@implementation UINavigationController (Blocks)
 
 #pragma mark - Associated References
 

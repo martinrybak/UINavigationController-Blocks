@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MRNavigationControllerDelegate.h"
 
-@interface UINavigationController (Back)
+@interface UINavigationController (Blocks)
 
 @property (strong, nonatomic) MRNavigationControllerDelegate* navigationControllerDelegate;
 - (id)initWithRootViewController:(UIViewController*)rootViewController navigationBarHidden:(BOOL)navigationBarHidden toolBarHidden:(BOOL)toolBarHidden;
