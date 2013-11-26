@@ -47,7 +47,7 @@
 	[self.array removeAllObjects];
 }
 
-- (int)count
+- (NSUInteger)count
 {
 	return self.array.count;
 }

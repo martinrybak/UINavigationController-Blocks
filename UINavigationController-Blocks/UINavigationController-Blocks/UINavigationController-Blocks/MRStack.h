@@ -14,7 +14,7 @@
 - (id)pop;
 - (id)peek;
 - (void)clear;
-- (int)count;
+- (NSUInteger)count;
 - (BOOL)isEmpty;
 
 @end
