@@ -65,13 +65,12 @@
 	self.vc3 = [[MRViewControllerThree alloc] init];
 	self.vc3.delegate = self;
 	self.vc3.title = @"View Controller 3";
-//	[self.nav pushViewController:self.vc3 animated:YES navigationBarHidden:NO toolBarHidden:YES completion:^{
-//		NSLog(@"VC2 pushed VC3");
-//	} onBack:^{
-//		NSLog(@"VC3 back pressed");
-//		self.vc3 = nil;
-//	}];
-	[self.nav pushViewController:self.vc3 animated:YES];
+	[self.nav pushViewController:self.vc3 animated:YES navigationBarHidden:NO toolBarHidden:YES completion:^{
+		NSLog(@"VC2 pushed VC3");
+	} onBack:^{
+		NSLog(@"VC3 back pressed");
+		self.vc3 = nil;
+	}];
 }
 
 #pragma mark - MRViewControllerThreeDelegate
