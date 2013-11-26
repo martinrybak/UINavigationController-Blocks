@@ -74,22 +74,24 @@
 		[self.navigationController setToolbarHidden:self.pushedController.toolBarHidden animated:animated];
         return;
 	}
-    
-    //If this is a multi-level pop
-    if (self.popToController)
+	
+	//This is a back button press
+	if (!self.popToController)
     {
-        while (((MRViewController*)[self.controllers peek]).controller != self.popToController)
-            [self.controllers pop];
-    }
-    
-	//If this is a regular pop
-	else
-	{
 		MRViewController* controllerToPop = [self.controllers pop];
 		if (controllerToPop.onPop)
 			controllerToPop.onPop();
+	}
+    
+    //This is a pop
+    else
+    {
+		//Kill the other controllers if this is a mult-level pop
+        while (((MRViewController*)[self.controllers peek]).controller != self.popToController)
+            [self.controllers pop];
     }
-		
+	
+	//Show the navigation bar and toolbar preferences of the now-topmost controller
     MRViewController* nextController = [self.controllers peek];
     [self.navigationController setNavigationBarHidden:nextController.navigationBarHidden animated:animated];
     [self.navigationController setToolbarHidden:nextController.toolBarHidden animated:animated];
@@ -111,7 +113,7 @@
         return;
 	}
     
-    //If this is a multi-level pop
+    //If this is a pop
     if (self.popToController)
     {
         if (self.popToControllerCompletion)
