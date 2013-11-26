@@ -52,7 +52,7 @@
 	self.vc2.title = @"View Controller 2";
 	[self.nav pushViewController:self.vc2 animated:YES navigationBarHidden:NO toolBarHidden:NO completion:^{
 		NSLog(@"VC1 pushed VC2");
-	} onBack:^{
+	} back:^{
 		NSLog(@"VC2 back pressed");
 		self.vc2 = nil;
 	}];
@@ -67,7 +67,7 @@
 	self.vc3.title = @"View Controller 3";
 	[self.nav pushViewController:self.vc3 animated:YES navigationBarHidden:NO toolBarHidden:YES completion:^{
 		NSLog(@"VC2 pushed VC3");
-	} onBack:^{
+	} back:^{
 		NSLog(@"VC3 back pressed");
 		self.vc3 = nil;
 	}];
@@ -90,7 +90,7 @@
 	self.vc4.title = @"View Controller 4";
 	[self.nav pushViewController:self.vc4 animated:YES navigationBarHidden:NO toolBarHidden:NO completion:^{
 		NSLog(@"VC3 pushed VC4");
-	} onBack:^{
+	} back:^{
 		NSLog(@"VC4 back pressed");
 		self.vc4 = nil;
 	}];

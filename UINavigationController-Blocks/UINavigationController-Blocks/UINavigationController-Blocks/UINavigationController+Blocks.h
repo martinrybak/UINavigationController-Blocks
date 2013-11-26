@@ -13,7 +13,7 @@
 
 @property (strong, nonatomic) MRNavigationControllerDelegate* navigationControllerDelegate;
 - (id)initWithRootViewController:(UIViewController*)rootViewController navigationBarHidden:(BOOL)navigationBarHidden toolBarHidden:(BOOL)toolBarHidden;
-- (void)pushViewController:(UIViewController*)viewController animated:(BOOL)animated navigationBarHidden:(BOOL)navigationBarHidden toolBarHidden:(BOOL)toolBarHidden completion:(void(^)(void))completion onBack:(void(^)(void))onBack;
+- (void)pushViewController:(UIViewController*)viewController animated:(BOOL)animated navigationBarHidden:(BOOL)navigationBarHidden toolBarHidden:(BOOL)toolBarHidden completion:(void(^)(void))completion back:(void(^)(void))back;
 - (UIViewController*)popViewControllerAnimated:(BOOL)animated completion:(void(^)(void))completion;
 - (NSArray*)popToRootViewControllerAnimated:(BOOL)animated completion:(void(^)(void))completion;
 - (NSArray*)popToViewController:(UIViewController*)viewController animated:(BOOL)animated completion:(void(^)(void))completion;

@@ -40,9 +40,9 @@ static char* const navigationControllerDelegateKey = "MRNavigationControllerDele
 	return self;
 }
 
-- (void)pushViewController:(UIViewController*)viewController animated:(BOOL)animated navigationBarHidden:(BOOL)navigationBarHidden toolBarHidden:(BOOL)toolBarHidden completion:(void(^)(void))completion onBack:(void(^)(void))onBack
+- (void)pushViewController:(UIViewController*)viewController animated:(BOOL)animated navigationBarHidden:(BOOL)navigationBarHidden toolBarHidden:(BOOL)toolBarHidden completion:(void(^)(void))completion back:(void(^)(void))back
 {
-    [self.navigationControllerDelegate savePushedController:viewController navigationBarHidden:navigationBarHidden toolBarHidden:toolBarHidden completion:completion onBack:onBack];
+    [self.navigationControllerDelegate savePushedController:viewController navigationBarHidden:navigationBarHidden toolBarHidden:toolBarHidden completion:completion back:back];
     [self pushViewController:viewController animated:animated];
 }
 

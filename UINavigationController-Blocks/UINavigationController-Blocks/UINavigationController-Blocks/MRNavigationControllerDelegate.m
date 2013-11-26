@@ -32,19 +32,19 @@
         self.controllers = [[MRStack alloc] init];
         self.navigationController = navigationController;
         self.rootController = rootViewController;
-        [self savePushedController:rootViewController navigationBarHidden:navigationBarHidden toolBarHidden:toolBarHidden completion:nil onBack:nil];
+        [self savePushedController:rootViewController navigationBarHidden:navigationBarHidden toolBarHidden:toolBarHidden completion:nil back:nil];
     }
     return self;
 }
 
-- (void)savePushedController:(UIViewController*)viewController navigationBarHidden:(BOOL)navigationBarHidden toolBarHidden:(BOOL)toolBarHidden completion:(void(^)(void))completion onBack:(void(^)(void))onBack
+- (void)savePushedController:(UIViewController*)viewController navigationBarHidden:(BOOL)navigationBarHidden toolBarHidden:(BOOL)toolBarHidden completion:(void(^)(void))completion back:(void(^)(void))back
 {
     self.pushedController = [[MRViewController alloc] init];
 	self.pushedController.controller = viewController;
 	self.pushedController.navigationBarHidden = navigationBarHidden;
 	self.pushedController.toolBarHidden = toolBarHidden;
-	self.pushedController.onPush = completion;
-	self.pushedController.onPop = onBack;
+	self.pushedController.completion = completion;
+	self.pushedController.back = back;
 }
 
 - (void)savePopToViewController:(UIViewController*)viewController completion:(void(^)(void))completion
@@ -61,10 +61,6 @@
 
 #pragma mark - UINavigationControllerDelegate
 
-// A view controller is about to appear on the screen. It is either:
-// 1. The root view controller
-// 2. A new controller that was just pushed
-// 3. An older controller that is being shown because the one above it was popped
 - (void)navigationController:(UINavigationController*)navigationController willShowViewController:(UIViewController*)viewController animated:(BOOL)animated
 {
 	//If this is a push
@@ -79,8 +75,8 @@
 	if (!self.popToController)
     {
 		MRViewController* controllerToPop = [self.controllers pop];
-		if (controllerToPop.onPop)
-			controllerToPop.onPop();
+		if (controllerToPop.back)
+			controllerToPop.back();
 	}
     
     //This is a pop
@@ -97,17 +93,13 @@
     [self.navigationController setToolbarHidden:nextController.toolBarHidden animated:animated];
 }
 
-// A view controller just appeared on the screen. It is either:
-// 1. The root view controller
-// 2. A new controller that was just pushed
-// 3. An older controller that is being shown because the one above it was popped
 - (void)navigationController:(UINavigationController*)navigationController didShowViewController:(UIViewController*)viewController animated:(BOOL)animated
 {
 	//If this is a push
 	if (viewController == self.pushedController.controller)
 	{
-		if (self.pushedController.onPush)
-			self.pushedController.onPush();
+		if (self.pushedController.completion)
+			self.pushedController.completion();
 		[self.controllers push:self.pushedController];
 		self.pushedController = nil;
         return;
