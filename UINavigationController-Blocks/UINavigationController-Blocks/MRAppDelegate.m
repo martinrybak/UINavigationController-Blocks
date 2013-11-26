@@ -53,7 +53,7 @@
 	[self.nav pushViewController:self.vc2 animated:YES navigationBarHidden:NO toolBarHidden:NO completion:^{
 		NSLog(@"VC1 pushed VC2");
 	} onBack:^{
-		NSLog(@"VC2 popped VC2");
+		NSLog(@"VC2 back pressed");
 		self.vc2 = nil;
 	}];
 }
@@ -65,12 +65,13 @@
 	self.vc3 = [[MRViewControllerThree alloc] init];
 	self.vc3.delegate = self;
 	self.vc3.title = @"View Controller 3";
-	[self.nav pushViewController:self.vc3 animated:YES navigationBarHidden:YES toolBarHidden:YES completion:^{
-		NSLog(@"VC2 pushed VC3");
-	} onBack:^{
-		NSLog(@"VC3 popped VC3");
-		self.vc3 = nil;
-	}];
+//	[self.nav pushViewController:self.vc3 animated:YES navigationBarHidden:NO toolBarHidden:YES completion:^{
+//		NSLog(@"VC2 pushed VC3");
+//	} onBack:^{
+//		NSLog(@"VC3 back pressed");
+//		self.vc3 = nil;
+//	}];
+	[self.nav pushViewController:self.vc3 animated:YES];
 }
 
 #pragma mark - MRViewControllerThreeDelegate
@@ -79,8 +80,8 @@
 {
 	[self.nav popViewControllerAnimated:YES completion:^{
         NSLog(@"VC2 popped to VC1");
+		self.vc2 = nil;
     }];
-	self.vc2 = nil;
 }
 
 - (void)showVC4
@@ -91,7 +92,7 @@
 	[self.nav pushViewController:self.vc4 animated:YES navigationBarHidden:NO toolBarHidden:NO completion:^{
 		NSLog(@"VC3 pushed VC4");
 	} onBack:^{
-		NSLog(@"VC4 popped VC4");
+		NSLog(@"VC4 back pressed");
 		self.vc4 = nil;
 	}];
 }
@@ -101,26 +102,27 @@
 - (void)popToRoot
 {
 	[self.nav popToRootViewControllerAnimated:YES completion:^{
-        NSLog(@"Popped from VC4 to Root");
+        NSLog(@"VC4 popped to Root");
+		self.vc1 = nil;
+		self.vc2 = nil;
+		self.vc3 = nil;
+		self.vc4 = nil;
     }];
-	self.vc1 = nil;
-	self.vc2 = nil;
-	self.vc3 = nil;
-	self.vc4 = nil;
 }
 
 - (void)popToVC3
 {
 	[self.nav popToViewController:self.vc3 animated:YES completion:^{
-         NSLog(@"Popped from VC4 to VC3");
+		NSLog(@"VC4 popped to VC3");
+		self.vc4 = nil;
     }];
-	self.vc4 = nil;
 }
 
 - (void)popToVC2
 {
     [self.nav popToViewController:self.vc2 animated:YES completion:^{
-        NSLog(@"VC3 popped to VC2 manually");
+        NSLog(@"VC4 popped to VC2");
+		self.vc3 = nil;
     }];
 }
 
